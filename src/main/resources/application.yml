@@ -1,9 +1,5 @@
 ---
 spring:
-  datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost/cogcloudapps_development
-    username: app
-    password: app
+
   jpa:
     generate-ddl: true
