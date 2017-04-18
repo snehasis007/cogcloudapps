@@ -1,7 +1,7 @@
 ---
 applications:
-  - name: springpong
+  - name: cogcloudapps
     buildpack: java_buildpack
-    path: target/pong-matcher-spring-1.0.0.BUILD-SNAPSHOT.jar
+    path: target/cogcloudapps-1.0.0.BUILD-SNAPSHOT.jar
     services:
 - mysql
