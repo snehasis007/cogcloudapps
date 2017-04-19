@@ -1,7 +1,10 @@
 package com.cts.cldapps;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+
+import com.cts.cldapps.config.SpringApplicationContextInitializer;
 import com.cts.cldapps.messaging.Receiver;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -13,7 +16,7 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class Application {
+public class Application extends SpringBootServletInitializer {
 
 	public final static String queueName = "app-queue1";
 
@@ -48,6 +51,7 @@ public class Application {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		new SpringApplicationBuilder(Application.class).initializers(new SpringApplicationContextInitializer())
+				.application().run(args);
 	}
 }
