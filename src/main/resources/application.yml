@@ -3,7 +3,8 @@ spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost/testdb
-    username: root	
-	password: root
+    username: root
+    password: root
+  
   jpa:
     generate-ddl: true
