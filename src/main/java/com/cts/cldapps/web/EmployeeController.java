@@ -36,7 +36,10 @@ public class EmployeeController {
 		logger.info("Adding Employee " + emp.getId());
 		Message ms=new Message();
 		try {
-			sender.send(emp);
+			logger.info("sending Employee : " + emp.getId());
+			sender.send(emp.toString());
+			employeeRepository.save(emp);
+			logger.info("sent : " + emp.getId());
 		} catch (Exception e) {
 			ms.setMessage("not Added");
 			return ms;
@@ -50,7 +53,8 @@ public class EmployeeController {
         logger.info("Updating Employee " + emp.getId());
         Message ms=new Message();
 		try {
-			sender.send(emp);
+			sender.send(emp.toString());
+			employeeRepository.save(emp);
 		} catch (Exception e) {
 			ms.setMessage("not Added");
 			return ms;

@@ -1,7 +1,4 @@
 ---
 applications:
   - name: cogcloudapps
-    buildpack: java_buildpack
-    path: target/cogcloudapps-1.0.0.BUILD-SNAPSHOT.jar
-    services:
-- mysql
+    path: target/cogcloudapps-0.1.0.jar
