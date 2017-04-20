@@ -41,8 +41,6 @@ public class SpringApplicationContextInitializer
 		}
 		List<String> profiles = new ArrayList<>();
 		List<ServiceInfo> serviceInfos = cloud.getServiceInfos();
-		// logger.info("Found serviceInfos: " +
-		// StringUtils.collectionToCommaDelimitedString(serviceInfos));
 		for (ServiceInfo serviceInfo : serviceInfos) {
 			if (serviceTypeToProfileName.containsKey(serviceInfo.getClass())) {
 				profiles.add(serviceTypeToProfileName.get(serviceInfo.getClass()));
@@ -51,14 +49,14 @@ public class SpringApplicationContextInitializer
 
 		if (profiles.size() > 0) {
 			return createProfileNames(profiles.get(0), "cloud");
+		}else{
+			throw new IllegalStateException("Mysql Service is not available in cloud");
 		}
-		return null;
+		
 	}
 
 	private String[] createProfileNames(String baseName, String suffix) {
 		String[] profileNames = { baseName, baseName + "-" + suffix };
-		// logger.info("Setting profile names: " +
-		// StringUtils.arrayToCommaDelimitedString(profileNames));
 		return profileNames;
 	}
 }
