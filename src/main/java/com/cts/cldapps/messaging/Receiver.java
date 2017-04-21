@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.cts.cldapps.domain.Employee;
 import com.cts.cldapps.repositories.EmployeeRepository;
 
 
@@ -19,8 +21,12 @@ public class Receiver {
         this.employeeRepository = repository;
 	}
 	
-    public void receiveMessage(String message) {
+    public void receiveMessage(Object message) {
     	logger.info("Receiving Employee " + message);
+    	if(message instanceof Employee){
+    		logger.info("saving Employee " + message);
+    		employeeRepository.save((Employee)message);
+    	}
               
     }
 
